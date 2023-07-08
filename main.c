@@ -75,6 +75,28 @@ int productPoint() {
 
 }
 
+int NumerosEgolatras(int n){
+    int numeroDigitos = floor(log10(n)+1);
+    char cadena [numeroDigitos + 1];
+
+    sprintf (cadena,"%d",n);
+
+    int suma=0;
+    for(int i=0;i<numeroDigitos; i++){
+        int cont = cadena[i] - '0';
+
+        int elevado = pow(cont, numeroDigitos);
+        suma=suma +elevado;
+    }
+    if(suma==n){
+        return 1;
+    }else{
+        return 0;
+    }
+
+
+}
+
 int option;
 void *menu (){
     printf("\t.........MENU........ \n\n"
@@ -112,7 +134,12 @@ int main() {
                 enterText();
                 break;
             case 4:
+
                 printf(".......Numeros Egolatras.......\n");
+                printf("Por favor ingrese el numero \n ");
+                int num ;
+                scanf("%d", &num);
+                printf("El numero %d %s",num, NumerosEgolatras( num)?"es egolatra\n":"No es egolatra\n");
                 break;
             case 5:
                 printf(".......Numero Magico.......\n");
