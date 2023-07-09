@@ -5,6 +5,42 @@
 #include <math.h>
 
 
+int NumeroMagico(int number){
+    int ac, c, r, aux;
+    while (c <= 9) {
+        aux = number;
+        while (aux > 0) {
+            r = aux % 10;
+            if (r == c) {
+                ac = (ac * 10) + r;
+            }
+            aux = (aux - r) / 10;
+        }
+        c = c + 1;
+    }
+    int menor=ac;
+    int invert=0;
+    while(ac>0){
+        invert=(invert *10)+ (ac%10);
+        ac = ac/10;
+
+    }
+    int mayor=invert;
+
+    int resta=mayor-menor;
+    if(resta==number){
+        return 1;
+    }else{
+        return 0;
+    }
+
+}
+
+
+
+
+
+
 int romanToInt(char *s) {
     int result = 0;
     int i;
@@ -207,6 +243,13 @@ int main() {
                 break;
             case 5:
                 printf(".......Numero Magico.......\n");
+
+                printf("Ingrese el numero \n ");
+                scanf("%d",&num);
+                printf("El numero %d %s",num,  NumeroMagico(num)?"es magico":"No es magico\n");
+
+                break;
+
                 break;
             case 6:
                 printf(".......Fechas.......\n");
